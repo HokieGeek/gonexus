@@ -11,19 +11,28 @@ const (
 	restListAssetsByRepo = "service/rest/v1/assets?repository=%s"
 )
 
-type repositoryItemAssetsChecksum struct {
-	Sha1 string `json:"sha1"`
-	Md5  string `json:"md5"`
+type RepositoryItemAssetsChecksum struct {
+	Md5    string `json:"md5"`
+	Sha256 string `json:"sha256"`
+	Sha512 string `json:"sha512"`
+	Sha1   string `json:"sha1"`
 }
 
 // RepositoryItemAsset describes the assets associated with a component
 type RepositoryItemAsset struct {
-	DownloadURL string                       `json:"downloadUrl"`
-	Path        string                       `json:"path"`
-	ID          string                       `json:"id"`
-	Repository  string                       `json:"repository"`
-	Format      string                       `json:"format"`
-	Checksum    repositoryItemAssetsChecksum `json:"checksum"`
+	DownloadURL    string                       `json:"downloadUrl"`
+	Path           string                       `json:"path"`
+	ID             string                       `json:"id"`
+	Repository     string                       `json:"repository"`
+	Format         string                       `json:"format"`
+	Checksum       RepositoryItemAssetsChecksum `json:"checksum"`
+	ContentType    string                       `json:"contentType"`
+	LastModified   string                       `json:"lastModified"`
+	LastDownloaded string                       `json:"lastDownloaded"`
+	Uploader       string                       `json:"uploader"`
+	UploaderIP     string                       `json:"uploaderIp"`
+	FileSize       int                          `json:"fileSize"`
+	BlobCreated    string                       `json:"blobCreated"`
 }
 
 type listAssetsResponse struct {
